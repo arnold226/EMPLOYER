@@ -1,0 +1,15 @@
+<div ng-controller="createStudent">
+
+			<h4>Create a Student in the Database</h4>
+
+			<label>Student ID<br>
+				<input type="text" name="sID" ng-model="sID" ng-required="true">
+			</label>
+			<label>Nickname<br>
+				<input type="text" name="nickname" ng-model="nickname" ng-required="true">
+			</label>
+			<button type="button" ng-click="makePostRequest()">Submit</button>
+
+			<p>{{sID + " " + nickname}}</p>
+
+</div>

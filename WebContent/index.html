@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html ng-app="employment" ng-cloak>
+
+	<head>
+		
+		<!-- Angular Material CSS using GitCDN to load directly from `bower-material/master` -->
+		<link rel="stylesheet" href="https://gitcdn.link/repo/angular/bower-material/master/angular-material.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+		<title>Student Management</title>
+		<style>
+			[ng\:cloak], [ng-cloak], .ng-cloak{
+					display: none;
+			}
+		</style>
+	</head>
+
+	<body ng-controller="loginCtrl">
+		
+		<div ng-hide="authData" layout="column"  id="test" id="popupContainer">
+		
+			
+		
+			<!--<md-content layout-gt-sm="row" layout-padding="" id="test2">-->
+			
+				<!--<div class="md-inline-form inputdemoBasicUsage box" id="test2">-->
+				
+					<h1 layout layout-align="center" class="md-headline custom_title"><strong>Login</strong></h1>
+				
+					<md-input-container>
+						<label>Employee ID</label>
+						<input type="text" ng-model="eID" ng-required="true">
+						
+					</md-input-container>
+
+					<md-input-container>
+						<label>Password</label>
+						<input type="password" ng-model="password" ng-required="true">
+					</md-input-container>
+					
+					<md-button  type="button" ng-click="authenticate()" class="md-raised md-primary submit" id="submit">Submit</md-button>
+				
+				<!--</div>-->
+    
+			<!--</md-content>-->
+		
+		
+		</div>
+		
+		
+		<div ng-show="authData" layout="column" id="test2" id="popupContainer">
+		
+			
+		
+			<!--<md-content layout-gt-sm="row" layout-padding="" > -->
+			
+				<!--<div class="md-inline-form inputdemoBasicUsage box"> -->
+				
+					<h1 layout layout-align="center" class="md-headline custom_title"><strong>Request</strong></h1>
+				
+					<md-input-container>
+						<label>Mortgage ID</label>
+						<input type="text" ng-model="mID" ng-required="true">
+					</md-input-container>
+					
+					<md-button type="button" ng-click="request()" class="md-raised md-primary submit_request" id="submit" >Submit</md-button>
+					
+					<br/>
+					<span id="completed"><strong>{{message_completed}}</strong></span><span id="error"><strong>{{message_error}}</strong></span>
+				
+				<!--</div>-->
+    
+			<!--</md-content>-->
+		
+		
+		</div>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+		<script src="js/employment.js"></script>
+		<script src="js/angular-route.js"></script>
+		<!-- Firebase -->
+		<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+		<!-- AngularFire -->
+		<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+		
+		<!-- Angular Material Dependencies -->
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+
+
+		<!-- Angular Material Javascript now available via Google CDN; version 0.11.2 used here -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
+	</body>
+</html>
