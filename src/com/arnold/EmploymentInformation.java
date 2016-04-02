@@ -1,3 +1,9 @@
+/**
+ * This class holds employment information
+ * 
+ * @author arnold
+ */
+
 package com.arnold;
 
 public class EmploymentInformation {
@@ -74,7 +80,7 @@ public class EmploymentInformation {
 
 	
 	/**
-	 * toString method
+	 * toString method with json format
 	 */
 	@Override
 	public String toString() {

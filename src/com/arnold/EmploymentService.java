@@ -1,3 +1,11 @@
+/**
+ * 
+ * This class houses the REST web service that receives a request from the front end, get the employee information from the Firebase database and 
+ * transfer the information to the Mortgage broker services.
+ * 
+ * @author arnold
+ */
+
 package com.arnold;
 
 import java.io.BufferedReader;
@@ -28,22 +36,35 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+
 @Path("/request")
 public class EmploymentService {
 	
+	//declare variables
 	Connection conn;
 	JSONObject resultJson;
 	JSONObject responseJson;
 	EmploymentInformation empInfo;
 	
 	
+	/**
+	 * This is the 'request' web service that communicates with the employer portal and the Mortgage Broker web services.
+	 * It receives json formated data from the employer portal containing the employee id and the mortgage id.
+	 * It then uses the employee id to get access to employee employment information stored in Firebase.
+	 * Finally, it sends the result (with the mortgage id) in json format to the Mortgage Broker
+	 * 
+	 * @param incomingData
+	 * @return
+	 * @throws IOException
+	 * @throws JSONException
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getEmploymentInformation(InputStream incomingData) throws IOException, JSONException{
 		
 		
-		
+		//variable to hold incoming data
 		StringBuilder result = new StringBuilder();
 		BufferedReader bReader = new BufferedReader(new InputStreamReader(incomingData));
 		
@@ -67,7 +88,7 @@ public class EmploymentService {
 		//initialize firebase object to user data location
 		Firebase ref =  new Firebase("https://employement.firebaseio.com/" + resultJson.getString("empID"));
 		
-		//attach a listener to read data once
+		//attach a listener to read data once from Firebase
 		ref.addListenerForSingleValueEvent(new ValueEventListener(){
 
 			@Override
@@ -149,9 +170,7 @@ public class EmploymentService {
 			
 				
 		});
-		
-		
-		
+			
 		
 		
 		System.out.println("Received Information: " + result.toString());

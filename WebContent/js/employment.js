@@ -12,6 +12,13 @@ app.factory("Auth", ["$firebaseAuth",
 	
 ]);
 
+//set angular material theme to dark
+app.config(function($mdThemingProvider) {
+	  $mdThemingProvider.theme('default')
+	    .dark();
+});
+
+
 
 //set routes
 /*app.config(function($routeProvider){
@@ -69,7 +76,8 @@ app.controller('loginCtrl', ["$scope", "Auth", "$http", "$timeout", function($sc
 	$scope.request = function(){
 		
 		$scope.mortID = $scope.mID;
-		$scope.url = "http://localhost:8080/Employment/arnoldcloud/request";
+		$scope.url = "http://employment.us-west-2.elasticbeanstalk.com/arnoldcloud/request";
+		//$scope.url = "http://localhost:8080/Employment/arnoldcloud/request";
 		$scope.method = "POST";
 		var param = JSON.stringify({empID: $scope.eID, mortID: $scope.mortID});
 		

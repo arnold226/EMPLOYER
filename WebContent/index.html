@@ -18,7 +18,7 @@
 
 	<body ng-controller="loginCtrl">
 		
-		<div ng-hide="authData" layout="column"  id="test" id="popupContainer">
+		<div ng-hide="authData" layout="column"  id="test" id="popupContainer" class="form-group" ng-form name="myForm">
 		
 			
 		
@@ -30,16 +30,19 @@
 				
 					<md-input-container>
 						<label>Employee ID</label>
-						<input type="text" ng-model="eID" ng-required="true">
+						<input name="empID" type="text" ng-model="eID" ng-required="true" class="form-control">
 						
 					</md-input-container>
 
 					<md-input-container>
 						<label>Password</label>
-						<input type="password" ng-model="password" ng-required="true">
+						<input name="pass" type="password" ng-model="password" ng-required="true" class="form-control">
 					</md-input-container>
 					
-					<md-button  type="button" ng-click="authenticate()" class="md-raised md-primary submit" id="submit">Submit</md-button>
+					<md-button ng-disabled="!myForm.empID.$dirty || !myForm.pass.$dirty || (myForm.empID.$touched && myForm.empID.$invalid) || (myForm.pass.$touched && myForm.pass.$invalid)" type="submit" ng-click="authenticate()" class="md-raised md-primary submit" id="submit">Submit</md-button>
+					
+					<span ng-show="myForm.empID.$touched && myForm.empID.$invalid" class = "validation">Please provide your employee ID</span><br/>
+					<span ng-show="myForm.pass.$touched && myForm.pass.$invalid" class = "validation">Please provide your password</span>
 				
 				<!--</div>-->
     
@@ -49,7 +52,7 @@
 		</div>
 		
 		
-		<div ng-show="authData" layout="column" id="test2" id="popupContainer">
+		<div ng-show="authData" layout="column" id="test2" id="popupContainer" class="form-group" ng-form name="myForm2">
 		
 			
 		
@@ -61,13 +64,15 @@
 				
 					<md-input-container>
 						<label>Mortgage ID</label>
-						<input type="text" ng-model="mID" ng-required="true">
+						<input name="mortID" type="text" ng-model="mID" ng-required="true" class="form-control">
 					</md-input-container>
 					
-					<md-button type="button" ng-click="request()" class="md-raised md-primary submit_request" id="submit" >Submit</md-button>
+					<md-button ng-disabled="!myForm2.mortID.$dirty" type="button" ng-click="request()" class="md-raised md-primary submit_request" id="submit" >Submit</md-button>
 					
 					<br/>
 					<span id="completed"><strong>{{message_completed}}</strong></span><span id="error"><strong>{{message_error}}</strong></span>
+					
+					<span ng-show="myForm2.mortID.$touched && myForm2.mortID.$invalid" class = "validation">Please provide your Mortgage ID</span>
 				
 				<!--</div>-->
     
