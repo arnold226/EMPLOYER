@@ -45,6 +45,8 @@ public class EmploymentService {
 	JSONObject resultJson;
 	JSONObject responseJson;
 	EmploymentInformation empInfo;
+	//public static int statusCode = 0;
+	
 	
 	
 	/**
@@ -68,6 +70,7 @@ public class EmploymentService {
 		StringBuilder result = new StringBuilder();
 		BufferedReader bReader = new BufferedReader(new InputStreamReader(incomingData));
 		
+		
 		String line = null;
 		
 		while( (line = bReader.readLine()) != null){
@@ -90,6 +93,8 @@ public class EmploymentService {
 		
 		//attach a listener to read data once from Firebase
 		ref.addListenerForSingleValueEvent(new ValueEventListener(){
+			
+			//int statusCode = 0;
 
 			@Override
 			public void onCancelled(FirebaseError arg0) {
@@ -146,8 +151,11 @@ public class EmploymentService {
 						
 						in.close();
 						
+						//statusCode = 200;
+						
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
+						//statusCode = 503;
 						System.out.println("Post Request to MBR Failed");
 						e.printStackTrace();
 					}
@@ -173,7 +181,7 @@ public class EmploymentService {
 			
 		
 		
-		System.out.println("Received Information: " + result.toString());
+		System.out.println("Received Information: " + result.toString() + " status code: " + 0);
 		
 		
 		return Response.status(200).entity("{\"created\": \"yes\"}").build();

@@ -41,6 +41,8 @@
 					
 					<md-button ng-disabled="!myForm.empID.$dirty || !myForm.pass.$dirty || (myForm.empID.$touched && myForm.empID.$invalid) || (myForm.pass.$touched && myForm.pass.$invalid)" type="submit" ng-click="authenticate()" class="md-raised md-primary submit" id="submit">Submit</md-button>
 					
+					<br/>
+					<span ng-show="!login" class = "validation">Invalid credentials</span><br/>
 					<span ng-show="myForm.empID.$touched && myForm.empID.$invalid" class = "validation">Please provide your employee ID</span><br/>
 					<span ng-show="myForm.pass.$touched && myForm.pass.$invalid" class = "validation">Please provide your password</span>
 				

@@ -41,6 +41,7 @@ app.controller('loginCtrl', ["$scope", "Auth", "$http", "$timeout", function($sc
 	$scope.auth = Auth;
 	$scope.message_completed = "";
 	$scope.message_error = "";
+	$scope.login = true;
 	
 	//listen for changes in authentication state
 	$scope.auth.$onAuth(function(authData){
@@ -66,11 +67,14 @@ app.controller('loginCtrl', ["$scope", "Auth", "$http", "$timeout", function($sc
 	}
 	
 	function onLogon(authData){
-		console.log("Authenticated payload:", authData);	
+		console.log("Authenticated payload:", authData);
+		$scope.login = true;
 	}
 	
 	function onError(error) {
         console.log("Authentication error:", error);
+        $scope.login = false;
+        $timeout(function(){$scope.login = true;}, 2000);
     }
 	
 	$scope.request = function(){
